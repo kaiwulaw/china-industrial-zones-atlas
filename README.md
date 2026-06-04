@@ -54,6 +54,23 @@ provenance* below.)
 
 ---
 
+## Requirements coverage
+
+How this project meets each item in the assignment brief.
+
+| Requirement | How it's met | Where (in `app.py`) |
+|---|---|---|
+| **Explanatory purpose** (not just exploratory) | Each tab poses and answers one specific question driven by user input — placement logic, zone-vs-non-zone difference, and change-after-designation — with a live text readout stating the answer. | `update_tab1` / `update_tab2` / `update_tab3` readouts |
+| **Non-built-in data** | The 2018 NDRC inter-ministerial development-zone catalog (n = 2,543), enriched with satellite covariates. Not a Seaborn/Plotly sample. | `data/enriched.csv`, `data/analysis_units.csv` |
+| **≥ 4 Dash Core Components for input** | **12 input components across 5 types:** `Dropdown` (province, zone type, covariate ×3), `RadioItems` (approval level ×2, statistic, axis scale, y-axis norm), `RangeSlider` (approval year), `Slider` (zone-density threshold), `Checklist` (cohorts, reference layers); plus `Tabs`/`Tab` for navigation. | `control_panel_tab1/2/3` |
+| **≥ 1 callback decorator** | **4 callbacks:** one renders the active tab, one updates each tab's figures + readout. | `@callback` on `render_tab`, `update_tab1`, `update_tab2`, `update_tab3` |
+| **≥ 3 different Plotly plots** | **5 chart types:** geographic scatter (`Scattergeo`), histogram, bar, violin, line/scatter. | `fig_zone_map`, `fig_covariate_distribution`, `fig_approvals_timeline`, `fig_county_map`, `fig_smd_bars`, `fig_group_distributions`, `fig_event_study`, `fig_treated_vs_baseline`, `fig_prepost_scatter` |
+| **Narrative / instructional info** | Masthead standfirst; a Markdown intro panel per tab; a live readout that updates on every interaction; a colophon with provenance and the descriptive-not-causal caveat. | `app.layout`, per-tab `dcc.Markdown`, readout `Div`s |
+| **Tuned aesthetics** (titles, tick labels, legends, formatting) | Shared `atlas` theme; every figure has titled axes with units, formatted hover text and number formatting, and legends; consistent palette and fonts. | `pio.templates["atlas"]`, each `fig_*` |
+| **Deployment-ready + GitHub repo** | `server = app.server` exposed for gunicorn; repo ships `requirements.txt`, data files, images, and this README. | bottom of `app.py` |
+
+---
+
 ## Preview
 
 Maps render live in the browser; the analytic figures below are static exports
