@@ -59,7 +59,7 @@ provenance* below.)
 Maps render live in the browser; the analytic figures below are static exports
 of the app's output (full set in [`images/`](images)).
 
-**Tab 2 — effect chart (reproduces the memo's Table 1 at threshold 1):**
+**Tab 2 — effect chart (standardized zone vs non-zone comparison):**
 
 ![SMD effect chart](images/tab2_smd_effect.png)
 
@@ -90,7 +90,7 @@ python app.py
 #    http://127.0.0.1:8050
 ```
 
-Now the app reads the two CSVs bundled in `data/`, so there is no data
+That's it — the app reads the two CSVs bundled in `data/`, so there is no data
 collection or network step required to run it.
 
 ### Or run it as a notebook
@@ -129,11 +129,12 @@ With **standardized mean difference (Cohen's *d*)**, dotted lines mark the
 0.2 / 0.5 / 0.8 small/medium/large thresholds; **teal = zone counties higher,
 terracotta = zone counties lower**. The map redraws zone vs non-zone counties as
 *k* changes, and the violin plot shows the two groups' distributions for the
-highlighted covariate. At *k* = 1 the table reproduces the published memo's
-Table 1 exactly (coastal-port SMD ≈ −0.65).
+highlighted covariate. At *k* = 1 the headline pattern is clear: zone counties
+sit much closer to coastal infrastructure (coastal-port SMD ≈ −0.65) and are
+moderately more built-up than non-zone counties.
 
-**Tab 3 — Designation Event Study.** Realizes the event-study idea from §3 of
-the accompanying memo, using the outcome the catalog's own time points support
+**Tab 3 — Designation Event Study.** An event study built on the outcome the
+catalog's own time points support
 *exactly*: built-up area at 1990 / 2000 / 2010 / 2015 / 2020, aligned to each
 zone's approval year so τ = 0 is the designation event. The top chart traces
 built-up by years-relative-to-designation, by cohort; built-up climbs through
@@ -144,16 +145,15 @@ pre/post scatter shows that ~99% of zones grew. Controls: approval cohorts,
 zone type, approval level, event-study y-axis normalization (raw / indexed to
 pre-designation = 100 / log), and reference-layer toggles.
 
-> **Why built-up and not annual VIIRS here?** The memo's preferred design is a
+> **Why built-up and not annual VIIRS here?** A natural alternative is a
 > county-level event study on the annual VIIRS panel. That needs a per-county
 > *first-designation year*, which `analysis_units.csv` does not carry; a
 > nearest-centroid reconstruction is only moderately faithful (≈0.58 correlation
-> with the true zone count), and — exactly as the memo's limitation (i) notes —
-> only ~110 counties have a designation year inside the 2013–2024 VIIRS window.
-> Built-up area, available at fixed snapshots for every zone, is the honest
-> outcome to expose interactively. The VIIRS county event study remains the
-> right next step once the designation-year join is built from the GADM
-> polygons.
+> with the true zone count), and only ~110 counties have a designation year
+> inside the 2013–2024 VIIRS window. Built-up area, available at fixed snapshots
+> for every zone, is the honest outcome to expose interactively. The VIIRS county
+> event study remains the right next step once the designation-year join is built
+> from the GADM polygons.
 
 ---
 
@@ -213,6 +213,4 @@ the differences shown reflect selection criteria (and possibly subsequent
 zone-induced change) without separating the two. The app is designed to make
 that distinction legible rather than to hide it.
 
-*Built by Kai Wu. Dataset and methodology documented in the accompanying memo,
-"Mapping Chinese Industrial Development Zones: A Spatial Audit and Descriptive
-Comparison."*
+*Built by Kai Wu for COMP 4433 · Project 2.*

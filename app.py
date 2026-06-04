@@ -23,7 +23,7 @@ The app answers two linked questions through direct user interaction:
          A comparison lab over 2,420 GADM admin-3 counties. Set the threshold
          that defines a "zone county," pick a statistic, and read the
          standardized mean difference (Cohen's d) between zone and non-zone
-         counties live — the memo's Table 1, made interactive.
+         counties live — a standardized zone-vs-non-zone comparison, interactive.
 
 Run locally:
     pip install -r requirements.txt
@@ -51,9 +51,9 @@ PANEL      = "#FBF8F1"   # raised panel / plot background
 INK        = "#211E1A"   # primary text
 MUTED      = "#6B6358"   # secondary text
 LINE       = "#DAD2C2"   # gridlines, hairlines
-TEAL       = "#1E6E64"   # water / coast / "HIGHER" in the memo's scheme
+TEAL       = "#1E6E64"   # water / coast / zone "HIGHER" in the effect chart
 TEAL_DEEP  = "#14534B"
-TERRA      = "#B9532E"   # land / "LOWER" in the memo's scheme
+TERRA      = "#B9532E"   # land / zone "LOWER" in the effect chart
 TERRA_SOFT = "#CB6A45"
 GOLD       = "#C2922E"
 INDIGO     = "#2F4B6E"
@@ -134,7 +134,7 @@ ZONE_COVARS = {
     "核准面积_公顷":                 ("Approved zone area", "hectares", True),
 }
 
-# Tab-2 covariates (county level)  —  match the memo's Table 1
+# Tab-2 covariates (county level)  —  the five compared characteristics
 COUNTY_COVARS = {
     "dist_to_coastal_port_km": ("Distance to coastal port", "km"),
     "dist_to_coast_km":        ("Distance to coast", "km"),
@@ -765,17 +765,17 @@ def render_eventstudy():
         control_panel_tab3(),
         html.Div(className="panel viz", children=[
             dcc.Markdown(className="narrative", children=(
-                "**Did the ground move after designation?** This realizes the event-study idea from §3 of "
-                "the memo, using the outcome the catalog's own time points support exactly — built-up area "
-                "at 1990 / 2000 / 2010 / 2015 / 2020, aligned to each zone's approval year (τ = 0). "
-                "The top chart traces built-up by years-relative-to-designation; built-up climbs through "
-                "τ = 0, **but it is already rising before designation** — the signature of selection, not "
-                "a clean treatment effect. The selection check below makes the point sharper: treated zones "
-                "sit far above the non-zone county baseline *already in 1990*, before most were designated. "
-                "*This is descriptive — not an estimated DiD with fixed effects and clustered errors. The "
-                "memo's preferred annual-VIIRS county event study needs a per-county designation-year join, "
-                "and only ~110 counties have a usable post-2013 pre-period, so built-up is the honest "
-                "outcome to show interactively here.*")),
+                "**Did the ground move after designation?** This is an event study built on the outcome "
+                "the catalog's own time points support exactly — built-up area at 1990 / 2000 / 2010 / "
+                "2015 / 2020, aligned to each zone's approval year (τ = 0). The top chart traces built-up "
+                "by years-relative-to-designation; built-up climbs through τ = 0, **but it is already "
+                "rising before designation** — the signature of selection, not a clean treatment effect. "
+                "The selection check below makes the point sharper: treated zones sit far above the "
+                "non-zone county baseline *already in 1990*, before most were designated. "
+                "*This is descriptive — not an estimated DiD with fixed effects and clustered errors. An "
+                "annual-VIIRS county event study would need a per-county designation-year join, and only "
+                "~110 counties have a usable post-2013 pre-period, so built-up is the honest outcome to "
+                "show interactively here.*")),
             dcc.Graph(id="t3-event", config={"displayModeBar": False}),
             html.Div(className="viz-row", children=[
                 dcc.Graph(id="t3-baseline", config={"displayModeBar": False}, className="half"),

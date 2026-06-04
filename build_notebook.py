@@ -35,7 +35,7 @@ BLURBS = {
     "TAB 1": "**Placement Explorer** figures — zone map, selection-vs-national "
              "distribution, and the approvals timeline. All pure functions.",
     "TAB 2": "**Zone vs Non-Zone Comparator** figures — county map, the live SMD "
-             "effect chart (reproduces the memo's Table 1 at threshold 1), and "
+             "effect chart (standardized zone vs non-zone comparison), and "
              "group distributions.",
     "TAB 3": "**Designation Event Study** figures — built-up area aligned to each "
              "zone's approval year (τ = 0), the selection check against the "
