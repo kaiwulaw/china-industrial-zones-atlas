@@ -90,7 +90,7 @@ python app.py
 #    http://127.0.0.1:8050
 ```
 
-That's it — the app reads the two CSVs bundled in `data/`, so there is no data
+Now the app reads the two CSVs bundled in `data/`, so there is no data
 collection or network step required to run it.
 
 ### Or run it as a notebook
