@@ -4,8 +4,47 @@
 
 An *explanatory* Dash application built on a research-grade spatial dataset of
 China's nationally and provincially approved industrial development zones. Where
-Project 1 was exploratory, this app is purpose-built to answer two linked
-questions through direct user interaction.
+Project 1 was exploratory, this app is purpose-built to answer linked questions
+through direct user interaction.
+
+## Background and motivation
+
+**Why this project.** This work is inspired by a comparative policy project on
+zoning and the local economy at the **Rocky Mountain Land Use Institute
+(RMLUI)**, University of Denver Sturm College of Law, which surveys industrial
+zones and industrial parks across multiple jurisdictions worldwide (including
+China, Israel, and India). The RMLUI project is framed in qualitative policy
+language — describing zone regimes, governance structures, and intended economic
+functions through case narratives and comparative description — and, importantly
+for this project, it gathers official data points from a range of public
+channels. This app approaches the same family of questions — *what gets
+designated, where, when, and what changes on the ground afterward* — through
+quantitative description and visual analysis of one specific case: China's 2018
+NDRC catalog. The intent is **complementary, not substitutive**: where RMLUI's
+qualitative framing illuminates *why* and *with what governance logic*, the
+quantitative-visual approach here surfaces *how many*, *where exactly*, *under
+which compositional structure*, and *with what observable ground-level
+signature* — the empirical substrate against which the qualitative readings can
+be checked.
+
+**The dataset.** The data is the **2018 inter-ministerial industrial-zone
+catalog led by the National Development and Reform Commission (NDRC)** — the
+*China Development Zones Review Announcement (2018 edition)* — covering all
+officially approved Chinese industrial zones at the national and provincial tier
+(**n = 2,543 zones**). It was constructed from the NDRC-led inter-ministerial PDF
+release and enriched with spatial covariates derived from buffered satellite
+layers: built-up area at five decadal time points (1990–2020), population
+density, forest cover, and distance to coast. The unit of observation is one
+industrial zone; the dataset is a cross-section with an embedded panel structure
+for the satellite-derived variables. It is **not a built-in Seaborn dataset** —
+it is a research-grade catalog originally constructed for empirical analysis of
+Chinese industrial policy, and the analysis here is framed for a technically
+literate audience interested in the geography, composition, and ground-level
+outcomes of Chinese zone designation. (For the county-level comparison in Tab 2,
+the same zones are spatially joined to GADM v4.1 admin-3 units — see *Data and
+provenance* below.)
+
+## The three views
 
 | Tab | Question | Unit | Source file |
 |-----|----------|------|-------------|
