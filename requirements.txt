@@ -1,0 +1,10 @@
+dash>=2.14
+plotly>=5.18
+pandas>=1.5
+numpy>=1.23
+
+# Optional, for deployment only (gunicorn app:server):
+# gunicorn>=21.0
+
+# Optional, to run the notebook version (China_Industrial_Zones_Atlas.ipynb):
+# jupyterlab>=4.0
