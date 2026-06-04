@@ -565,7 +565,8 @@ def fig_prepost_scatter(dff, log_on):
 # ============================================================
 
 app = Dash(__name__, title="China Industrial Zones — Atlas",
-           assets_folder=str(DATA_DIR.parent / "assets"))
+           assets_folder=str(DATA_DIR.parent / "assets"),
+           suppress_callback_exceptions=True)
 server = app.server  # for gunicorn / deployment
 
 CONTROL = {"marginBottom": "18px"}
